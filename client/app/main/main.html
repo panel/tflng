@@ -1,0 +1,53 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Tempo Free Lax</h1>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <table class="col-lg-12 table table-hover table-striped">
+      <thead>
+        <tr>
+          <th ng-click="sortBy('name')">Team</th>
+          <th ng-click="sortBy('stats.wins')">W-L</th>
+          <th ng-click="sortBy('pyth')">Pyth</th>
+          <th ng-click="sortBy('adjustedOffensiveEfficiency')">Off. Eff.</th>
+          <th ng-click="sortBy('adjustedDefensiveEfficiency')">Def. Eff.</th>
+          <th ng-click="sortBy('opponentPyth')">S.O.S.</th>
+          <th ng-click="sortBy('pace')">Pace</th>
+          <th ng-click="sortBy('possessionPercentage')">Pos%</th>
+          <th ng-click="sortBy('faceoffPercentage')">FO%</th>
+          <th ng-click="sortBy('offensiveClearRate')">Clear%</th>
+          <th ng-click="sortBy('defensiveClearRate')">Ride%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="team in teams">
+          <td>{{team.name}}</td>
+          <td>{{team.stats.wins}}-{{team.losses()}}</td>
+          <td>{{team.pyth() | percentage:3}}</td>
+          <td>{{team.adjustedOffensiveEfficiency() | trim}}</td>
+          <td>{{team.adjustedDefensiveEfficiency() | trim}}</td>
+          <td>{{team.opponentPyth() | percentage:3}}</td>
+          <td>{{team.pace() | trim}}</td>
+          <td>{{team.possessionPercentage() | percentage:3}}</td>
+          <td>{{team.faceoffPercentage() | percentage:3}}</td>
+          <td>{{team.offensiveClearRate() | percentage:3}}</td>
+          <td>{{team.defensiveClearRate() | percentage:3}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>Angular Fullstack v2.0.13 |
+        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+  </div>
+</footer>
